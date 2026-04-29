@@ -383,6 +383,96 @@
       padding: 60px 28px; text-align: center; gap: 14px;
     }
 
+    /* ── CONTACT US ── */
+    #contact {
+      background: #060f1e;
+      border-top: 1px solid rgba(0,208,132,0.1);
+      padding: 64px 5% 48px;
+    }
+    .contact-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: start;
+    }
+    .contact-info .sec-label { text-align: left; }
+    .contact-info h2 {
+      font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 800; line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.015em;
+    }
+    .contact-info p {
+      color: var(--gray); font-size: 0.92rem; line-height: 1.8; margin-bottom: 28px;
+    }
+    .contact-detail {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--gray); font-size: 0.85rem; margin-bottom: 10px;
+    }
+    .contact-detail-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(0,208,132,0.1); border: 1px solid rgba(0,208,132,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: #4a5a78; }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(0,208,132,0.45);
+      background: rgba(0,208,132,0.04);
+    }
+    .contact-form textarea { resize: vertical; min-height: 110px; }
+    .contact-form input[type="tel"] { appearance: none; -webkit-appearance: none; }
+
+    .btn-contact {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 28px;
+      background: var(--green); color: var(--dark);
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem;
+      border: none; border-radius: 7px; cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      width: fit-content; letter-spacing: 0.01em;
+    }
+    .btn-contact:hover {
+      background: var(--green2); transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,208,132,0.35);
+    }
+    .btn-contact:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .contact-msg {
+      font-size: 0.84rem; padding: 10px 14px; border-radius: 7px;
+      display: none;
+    }
+    .contact-msg.success {
+      display: block; background: rgba(0,208,132,0.1);
+      border: 1px solid rgba(0,208,132,0.3); color: var(--green);
+    }
+    .contact-msg.error {
+      display: block; background: rgba(255,80,80,0.08);
+      border: 1px solid rgba(255,80,80,0.25); color: #ff6b6b;
+    }
+
+    @media (max-width: 860px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 560px) {
+      #contact { padding: 48px 4% 36px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #060f1e; padding: 26px 5%; text-align: center;
@@ -690,6 +780,43 @@
   </div>
 </section>
 
+<!-- ── CONTACT US ── -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="sec-label">Contact Us</div>
+      <h2>Get in <span style="color:var(--green);">Touch</span></h2>
+      <p>Have questions about funding options? Our team is here to help. Reach out and we'll respond promptly.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📧</div>
+        <span>claudine@lasolasagency.com</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">⚡</div>
+        <span>We respond within 24 hours</span>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" id="contactForm">
+        <!-- Web3Forms access key — replace with your own from https://web3forms.com -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New Contact Inquiry — RapidSBA">
+        <input type="hidden" name="redirect" value="false">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="tel" name="mobile" placeholder="Mobile Number" required>
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-contact" id="contactBtn">
+          <span id="contactBtnText">Send Message →</span>
+        </button>
+        <div class="contact-msg" id="contactMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- ── FOOTER ── -->
 <footer>
   <p style="margin-bottom:10px;">© 2026 RapidSBA. All rights reserved.</p>
@@ -732,7 +859,45 @@
     }
   });
 
-  // Hide nav apply button on mobile (show hamburger instead)
+  // Contact form submission via Web3Forms
+  const contactForm = document.getElementById('contactForm');
+  const contactBtn = document.getElementById('contactBtn');
+  const contactBtnText = document.getElementById('contactBtnText');
+  const contactMsg = document.getElementById('contactMsg');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    contactBtn.disabled = true;
+    contactBtnText.textContent = 'Sending…';
+    contactMsg.className = 'contact-msg';
+    contactMsg.textContent = '';
+
+    const formData = new FormData(contactForm);
+    // Append the recipient email
+    formData.append('to', 'claudine@lasolasagency.com');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.success) {
+        contactMsg.className = 'contact-msg success';
+        contactMsg.textContent = '✓ Message sent! We\'ll get back to you within 24 hours.';
+        contactForm.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      contactMsg.className = 'contact-msg error';
+      contactMsg.textContent = '⚠ Something went wrong. Please try again or email us directly.';
+    } finally {
+      contactBtn.disabled = false;
+      contactBtnText.textContent = 'Send Message →';
+    }
+  });
+
   function handleNavLayout() {
     if (window.innerWidth <= 560) {
       navApply.style.display = 'none';
